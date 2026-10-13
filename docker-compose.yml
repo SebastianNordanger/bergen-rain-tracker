@@ -1,0 +1,17 @@
+# Runs PostgreSQL in Docker for the rain tracker (local development only)
+services:
+    db: 
+        image: postgres:17
+        container_name: bergen-rain-db
+        environment:
+            POSTGRES_USER: rainuser
+            POSTGRES_PASSWORD: rainpassword
+            POSTGRES_DB: raintracker
+        ports:
+            - "5432:5432"
+        volumes:
+            - rain-data:/var/lib/postgresql/data
+
+# Keeps the database data even if the container is removed
+volumes:
+    rain-data:
