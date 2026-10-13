@@ -24,7 +24,9 @@
 // git status -> shows what's ready to save, and what's not yet included
 // git checkout -b <branch-name> -> creates a new branch and switches to it right away
 // git add . -> marks files as ready to be saved
+// git add <file> -> marks only one specific file as ready to be saved
 // git commit -m "<message>" -> saves the marked files, with a short message describing what changed
+// git commit --amend --no-edit -> adds new changes into the previous commit instead of making a new one (only safe if not pushed yet)
 // git push -u origin <branch-name> -> first push of a new branch, also creates it on GitHub
 // git push -> uploads commits to GitHub
 // ...
