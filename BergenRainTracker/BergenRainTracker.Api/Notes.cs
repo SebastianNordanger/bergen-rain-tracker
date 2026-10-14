@@ -1,6 +1,7 @@
 ﻿// Progress:
 // Phase 1:
-// Created ASP.NET Core Web API project (.NET 10), set up Git with feature branches, PostgreSQL in Docker via Docker Compose, defined DailyRain class (id, date, millimeters), and connected it to the database using EF Core (Npgsql) with a DbContext.
+// Created ASP.NET Core Web API project (.NET 10), set up Git with feature branches, PostgreSQL in Docker via Docker Compose, defined DailyRain class (Id, Date, Millimeters, RainHours), installed EF Core + Npgsql packages, added the connection string,
+// and connected it to the database using EF Core (Npgsql) with a DbContext.
 
 // Phase 2:
 // ...
@@ -9,9 +10,9 @@
 // ...
 
 
-// OOP pillars (... -> ...):
+// OOP pillars (Encapsulation -> ...):
 // Phase 1:
-// ...
+// Encapsulation -> DailyRain.Id has private set, so only EF Core/the database can set it, not outside code
 
 // Phase 2:
 // ...
@@ -35,16 +36,22 @@
 // Phase 1 - Docker commands used (PostgreSQL only, API runs in Visual Studio):
 // docker compose up -d -> starts the database container in the background
 // docker ps -> lists running containers
+// docker compose down -> stops and removes the container (data is kept in the volume)
 // ...
-
 
 // Docker notes:
 // Only the database runs in Docker, the API reaches it via localhost:5432.
 // The volume (rain-data) keeps the database data even if the container is removed.
+// Port is bound to 127.0.0.1, so the database is only reachable from this PC.
 // ...
 
 
 // EF Core setup (Package Manager Console):
+// Packages (installed with: dotnet add package <name>):
+// Npgsql.EntityFrameworkCore.PostgreSQL -> lets EF Core talk to Postgres
+// Microsoft.EntityFrameworkCore.Design -> needed to create migrations
+// Microsoft.EntityFrameworkCore.Tools -> migration commands in Visual Studio
+// Connection string is in appsettings.json - tells the API where the database is and how to log in
 // ...
 
 
