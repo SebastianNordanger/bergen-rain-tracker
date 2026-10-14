@@ -1,11 +1,11 @@
 ﻿namespace BergenRainTracker.Api.Models
 {
+    // Rain data for one day in Bergen
     public class DailyRain
     {
-        // TODO next session:
-        // 1. Add properties: Id, Date, Millimeters, more?
-        // 2. Install EF Core + Npgsql (Postgres) packages
-        // 3. Create a DbContext and connect it to the Docker database
-        // 4. Remember to update comments, etc., if needed after this!
+        public int Id { get; private set; } // Set by the database with private set
+        public DateOnly Date { get; set; }
+        public double Millimeters { get; set; }
+        public double RainHours { get; set; }
     }
 }
