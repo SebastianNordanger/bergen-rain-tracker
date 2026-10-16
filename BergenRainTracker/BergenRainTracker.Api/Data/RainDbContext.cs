@@ -1,12 +1,17 @@
-﻿namespace BergenRainTracker.Api.Data
+﻿using Microsoft.EntityFrameworkCore;
+using BergenRainTracker.Api.Models;
+
+namespace BergenRainTracker.Api.Data
 {
-    // TODO next session:
-    // 1. docker compose up -d
-    // 2. Create DbContext (this file)
-    // 3. Register DbContext in Program.cs (UseNpgsql)
-    // 4. Add-Migration + Update-Database, check that the table exists
-    // 5. Commit, update Notes.cs, merge feature/postgres-docker into main
-    public class RainDbContext
+    // Database class - inherits from EF Core's DbContext, which handles the connection, saving and tracking changes
+    public class RainDbContext : DbContext
     {
+        // Constructor - gets the settings (Postgres + connection string) from Program.cs and passes them on to DbContext
+        public RainDbContext(DbContextOptions<RainDbContext> options) : base(options)
+        {
+        }
+
+        // The DailyRains table - each DailyRain object is one row
+        public DbSet<DailyRain> DailyRains { get; set; }
     }
 }
