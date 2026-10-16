@@ -1,20 +1,21 @@
 ﻿// Progress:
 // Phase 1:
 // Created ASP.NET Core Web API project (.NET 10), set up Git with feature branches, PostgreSQL in Docker via Docker Compose, defined DailyRain class (Id, Date, Millimeters, RainHours), installed EF Core + Npgsql packages, added the connection string,
-// and connected it to the database using EF Core (Npgsql) with a DbContext.
+// and connected it to the database using EF Core (Npgsql) with a DbContext. Created the DailyRains table with the InitialCreate migration.
 
-// Phase 2:
+// Phase 2 (Current):
 // ...
 
 // Phase 3 (Last phase):
 // ...
 
 
-// OOP pillars (Encapsulation -> ...):
+// OOP pillars (Encapsulation -> Inheritance -> ...):
 // Phase 1:
 // Encapsulation -> DailyRain.Id has private set, so only EF Core/the database can set it, not outside code
+// Inheritance -> RainDbContext inherits from DbContext
 
-// Phase 2:
+// Phase 2 (Current):
 // ...
 
 // Phase 3 (Last phase):
@@ -30,12 +31,14 @@
 // git commit --amend --no-edit -> adds new changes into the previous commit instead of making a new one (only safe if not pushed yet)
 // git push -u origin <branch-name> -> first push of a new branch, also creates it on GitHub
 // git push -> uploads commits to GitHub
+// git commit --amend -m "<message>" -> fixes the last commit message (only if not pushed yet)
 // ...
 
 
 // Phase 1 - Docker commands used (PostgreSQL only, API runs in Visual Studio):
 // docker compose up -d -> starts the database container in the background
 // docker ps -> lists running containers
+// docker exec -it bergen-rain-db psql -U rainuser -d raintracker -c "\dt" -> lists the tables in Postgres
 // docker compose down -> stops and removes the container (data is kept in the volume)
 // ...
 
@@ -52,6 +55,8 @@
 // Microsoft.EntityFrameworkCore.Design -> needed to create migrations
 // Microsoft.EntityFrameworkCore.Tools -> migration commands in Visual Studio
 // Connection string is in appsettings.json - tells the API where the database is and how to log in
+// Add-Migration InitialCreate -> creates the migration files (Up = create table, Down = undo)
+// Update-Database -> creates the table in Postgres (first "fail" is normal, EF Core creates its history table first)
 // ...
 
 
