@@ -24,6 +24,7 @@
 
 // Git commands used (terminal, ordered by typical workflow):
 // git status -> shows what's ready to save, and what's not yet included
+// git log --oneline -3 -> shows the last 3 commits, one line each
 // git switch <branch-name> -> switches to another branch
 // git checkout -b <branch-name> -> creates a new branch and switches to it right away
 // git switch -c <branch-name> -> creates a new branch and switches to it (newer command, same as checkout -b)
@@ -32,6 +33,7 @@
 // git commit -m "<message>" -> saves the marked files, with a short message describing what changed
 // git commit --amend --no-edit -> adds new changes into the previous commit instead of making a new one (only safe if not pushed yet)
 // git commit --amend -m "<message>" -> fixes the last commit message (only if not pushed yet)
+// git push --force-with-lease -> uploads the fixed commit if it was already pushed (only on my branches, never main)
 // git push -u origin <branch-name> -> first push of a new branch, also creates it on GitHub
 // git push -> uploads commits to GitHub
 // git pull -> downloads the latest changes from GitHub
