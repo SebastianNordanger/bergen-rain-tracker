@@ -22,20 +22,24 @@
 // ...
 
 
-// Phase 1 - Git setup (terminal commands used so far, ordered by typical workflow):
+// Git commands used (terminal, ordered by typical workflow):
 // git status -> shows what's ready to save, and what's not yet included
+// git switch <branch-name> -> switches to another branch
 // git checkout -b <branch-name> -> creates a new branch and switches to it right away
+// git switch -c <branch-name> -> creates a new branch and switches to it (newer command, same as checkout -b)
 // git add . -> marks files as ready to be saved
 // git add <file> -> marks only one specific file as ready to be saved
 // git commit -m "<message>" -> saves the marked files, with a short message describing what changed
 // git commit --amend --no-edit -> adds new changes into the previous commit instead of making a new one (only safe if not pushed yet)
+// git commit --amend -m "<message>" -> fixes the last commit message (only if not pushed yet)
 // git push -u origin <branch-name> -> first push of a new branch, also creates it on GitHub
 // git push -> uploads commits to GitHub
-// git commit --amend -m "<message>" -> fixes the last commit message (only if not pushed yet)
+// git pull -> downloads the latest changes from GitHub
+// git merge <branch-name> -> brings a branch's commits into the current branch (e.g. feature into main)
 // ...
 
 
-// Phase 1 - Docker commands used (PostgreSQL only, API runs in Visual Studio):
+// Docker commands used (PostgreSQL only, API runs in Visual Studio):
 // docker compose up -d -> starts the database container in the background
 // docker ps -> lists running containers
 // docker exec -it bergen-rain-db psql -U rainuser -d raintracker -c "\dt" -> lists the tables in Postgres
@@ -78,5 +82,5 @@
 // ...
 
 
-// Phase 3 - React commands used (npm):
+// React commands used (npm):
 // ...
