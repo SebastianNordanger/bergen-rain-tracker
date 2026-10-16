@@ -70,8 +70,8 @@
 
 // Open-Meteo notes:
 // Free weather API, no key needed: https://open-meteo.com
-// Bergen coordinates: 60.39, 5.32 (from Google maps, rounded)
-// Uses daily time -> Date, precipitation_sum (rain + showers) -> Millimeters, precipitation_hours -> RainHours (Id is set by the database)
+// Bergen coordinates: 60.39, 5.32 (from Google maps, rounded).
+// Uses daily time -> Date, precipitation_sum (rain + showers) -> Millimeters, precipitation_hours -> RainHours (Id is set by the database).
 
 
 // API testing (PowerShell):
