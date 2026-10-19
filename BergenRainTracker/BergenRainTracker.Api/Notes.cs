@@ -4,7 +4,8 @@
 // and connected it to the database using EF Core (Npgsql) with a DbContext. Created the DailyRains table with the InitialCreate migration.
 
 // Phase 2 (Current):
-// ...
+// Get Bergen rain data from Open-Meteo with HttpClient (registered with Dependency Injection, async with GetFromJsonAsync), OpenMeteoResponse class that matches the JSON, save the data to Postgres with RainDbContext, make API endpoints (RainController), and
+// Swagger UI for testing endpoints in the browser.
 
 // Phase 3 (Last phase):
 // ...
@@ -74,9 +75,11 @@
 // Free weather API, no key needed: https://open-meteo.com
 // Bergen coordinates: 60.39, 5.32 (from Google Maps, rounded to 2 decimals).
 // Uses daily time -> Date, precipitation_sum (rain + showers) -> Millimeters, precipitation_hours -> RainHours (Id is set by the database).
+// past_days=31&forecast_days=0 -> only finished days (today's value isn't final yet).
+// ...
 
-
-// API testing (PowerShell):
+// API testing:
+// Swagger UI (/swagger) for testing endpoints in the browser (https://localhost:7196/swagger).
 // ...
 
 
