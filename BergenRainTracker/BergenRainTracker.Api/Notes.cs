@@ -1,13 +1,20 @@
-﻿// Progress:
+﻿// What to do next session (1 hour ish):
+// 1. git status (should be on main, clean). No Docker needed for setup.
+// 2. Create a new branch for Phase 3 (feature/react-frontend).
+// 3. Create the React project = the frontend (web page with table + bar chart). Install Node.js first if needed. Made with a command, in its own folder next to the API.
+// 4. Commit and push.
+
+
+// Progress:
 // Phase 1 (Done):
 // Created ASP.NET Core Web API project (.NET 10), set up Git with feature branches, PostgreSQL in Docker via Docker Compose, defined DailyRain class (Id, Date, Millimeters, RainHours), installed EF Core + Npgsql packages, added the connection string,
 // and connected it to the database using EF Core (Npgsql) with a DbContext. Created the DailyRains table with the InitialCreate migration.
 
-// Phase 2 (Current):
-// Get Bergen rain data from Open-Meteo with HttpClient (registered with Dependency Injection, async with GetFromJsonAsync), OpenMeteoResponse class that matches the JSON, save the data to Postgres with RainDbContext, make API endpoints (RainController), and
-// Swagger UI for testing endpoints in the browser.
+// Phase 2 (Done):
+// Get Bergen rain data from Open-Meteo with HttpClient (registered with Dependency Injection, async with GetFromJsonAsync), OpenMeteoResponse class that matches the JSON, save the data to Postgres with RainDbContext (skips days already saved),
+// API endpoints in RainController (POST to fetch + save, GET to read), and Swagger UI for testing endpoints in the browser.
 
-// Phase 3 (Last phase):
+// Phase 3 (Current):
 // ...
 
 
@@ -16,10 +23,10 @@
 // Encapsulation -> DailyRain.Id has private set, so only EF Core/the database can set it, not outside code
 // Inheritance -> RainDbContext inherits from DbContext
 
-// Phase 2 (Current):
-// ...
+// Phase 2:
+// Abstraction -> RainController uses Ok() and ToListAsync() without knowing how they work inside
 
-// Phase 3 (Last phase):
+// Phase 3 (Current):
 // ...
 
 
@@ -46,6 +53,7 @@
 // docker compose up -d -> starts the database container in the background
 // docker ps -> lists running containers
 // docker exec -it bergen-rain-db psql -U rainuser -d raintracker -c "\dt" -> lists the tables in Postgres
+// docker exec -it bergen-rain-db psql -U rainuser -d raintracker -> opens Postgres inside the container (\q to exit)
 // docker compose down -> stops and removes the container (data is kept in the volume)
 // ...
 
@@ -68,6 +76,7 @@
 
 
 // SQL commands used (PostgreSQL):
+// SELECT SUM("Millimeters") FROM "DailyRains"; -> adds up all the rain (quotes needed because EF Core uses capital letters in names, and Postgres makes names lowercase without quotes)
 // ...
 
 
@@ -76,7 +85,9 @@
 // Bergen coordinates: 60.39, 5.32 (from Google Maps, rounded to 2 decimals).
 // Uses daily time -> Date, precipitation_sum (rain + showers) -> Millimeters, precipitation_hours -> RainHours (Id is set by the database).
 // past_days=31&forecast_days=0 -> only finished days (today's value isn't final yet).
+// Days go from midnight to midnight (weather model), so they can differ a bit from station data on Yr (yr.no), which seems to count from morning to morning.
 // ...
+
 
 // API testing:
 // Swagger UI (/swagger) for testing endpoints in the browser (https://localhost:7196/swagger).
@@ -84,6 +95,8 @@
 
 
 // Endpoints:
+// POST /api/rain/fetch -> saves new rain days from Open-Meteo to the database
+// GET /api/rain -> returns all saved rain days
 // ...
 
 
