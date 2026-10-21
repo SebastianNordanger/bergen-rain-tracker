@@ -1,5 +1,6 @@
 ﻿using BergenRainTracker.Api.Data;
 using BergenRainTracker.Api.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BergenRainTracker.Api.Services;
 
@@ -36,6 +37,12 @@ public class RainService
 
         for (int i = 0; i < response.Daily.Time.Count; i++)
         {
+            // Skip days that are already saved
+            if (await _context.DailyRains.AnyAsync(r => r.Date == response.Daily.Time[i]))
+            {
+                continue;
+            }
+
             var day = new DailyRain
             {
                 Date = response.Daily.Time[i],
