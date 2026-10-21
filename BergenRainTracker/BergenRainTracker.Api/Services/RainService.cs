@@ -1,24 +1,21 @@
-﻿// What to do next session:
-// 1. docker compose up -d and check the branch with git status.
-// 2. Save the rain data to the database in RainService (using RainDbContext).
-// 3. Make the POST and GET endpoints (RainController) and test them in Swagger if time allows.
-// 4. Commit, push, and docker compose down.
-
-
+﻿using BergenRainTracker.Api.Data;
 using BergenRainTracker.Api.Models;
 
 namespace BergenRainTracker.Api.Services;
 
-// Gets Bergen rain data from Open-Meteo
+// Gets Bergen rain data from Open-Meteo and saves it to the database
 public class RainService
 {
     private readonly HttpClient _httpClient;
+    private readonly RainDbContext _context;
 
-    public RainService(HttpClient httpClient)
+    // Dependency Injection (DI) gives RainService an HttpClient (to get data) and a RainDbContext called context (to save it)
+    public RainService(HttpClient httpClient, RainDbContext context)
     {
         _httpClient = httpClient;
+        _context = context;
     }
-        
+
     // Calls Open-Meteo and turns the JSON into an OpenMeteoResponse
     public async Task<OpenMeteoResponse> GetBergenRainAsync()
     {
@@ -28,5 +25,28 @@ public class RainService
         var response = await _httpClient.GetFromJsonAsync<OpenMeteoResponse>(url);
 
         return response ?? new OpenMeteoResponse();
+    }
+
+    // Gets the rain data from Open-Meteo and saves it to the database
+    public async Task SaveBergenRainAsync()
+    {
+        var response = await GetBergenRainAsync();
+
+        var rainDays = new List<DailyRain>();
+
+        for (int i = 0; i < response.Daily.Time.Count; i++)
+        {
+            var day = new DailyRain
+            {
+                Date = response.Daily.Time[i],
+                Millimeters = response.Daily.PrecipitationSum[i] ?? 0,
+                RainHours = response.Daily.PrecipitationHours[i] ?? 0
+            };
+
+            rainDays.Add(day);
+        }
+
+        _context.DailyRains.AddRange(rainDays);
+        await _context.SaveChangesAsync();
     }
 }
