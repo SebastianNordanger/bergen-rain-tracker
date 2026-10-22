@@ -1,8 +1,8 @@
 ﻿// What to do next session (1 hour ish):
-// 1. git status (should be on main, clean). No Docker needed for setup.
-// 2. Create a new branch for Phase 3 (feature/react-frontend).
-// 3. Create the React project = the frontend (web page with table + bar chart). Install Node.js first if needed. Made with a command, in its own folder next to the API.
-// 4. Commit and push.
+// 1. git status (should be on main, only Notes.cs changed). No Docker needed for setup.
+// 2. Create a new branch for Phase 3 (feature/react-frontend), then commit Notes.cs on it.
+// 3. Create the React project (frontend, table + bar chart). Install Node.js first if needed. Made with a command, own folder next to the API.
+// 4. Commit and push. If time: remove the default React start page and add a "Bergen Rain Tracker" heading.
 
 
 // Progress:
@@ -32,6 +32,7 @@
 
 // Git commands used (terminal, ordered by typical workflow):
 // git status -> shows what's ready to save, and what's not yet included
+// git branch -> lists all branches, the current one is marked with a star (*)
 // git log --oneline -3 -> shows the last 3 commits, one line each
 // git switch <branch-name> -> switches to another branch
 // git checkout -b <branch-name> -> creates a new branch and switches to it right away
