@@ -1,11 +1,4 @@
-﻿// What to do next session (1 hour ish):
-// 1. git status (should be on main, only Notes.cs changed). No Docker needed for setup.
-// 2. Create a new branch for Phase 3 (feature/react-frontend), then commit Notes.cs on it.
-// 3. Create the React project (frontend, table + bar chart). Install Node.js first if needed. Made with a command, own folder next to the API.
-// 4. Commit and push. If time: remove the default React start page and add a "Bergen Rain Tracker" heading.
-
-
-// Progress:
+﻿// Progress:
 // Phase 1 (Done):
 // Created ASP.NET Core Web API project (.NET 10), set up Git with feature branches, PostgreSQL in Docker via Docker Compose, defined DailyRain class (Id, Date, Millimeters, RainHours), installed EF Core + Npgsql packages, added the connection string,
 // and connected it to the database using EF Core (Npgsql) with a DbContext. Created the DailyRains table with the InitialCreate migration.
@@ -15,10 +8,11 @@
 // API endpoints in RainController (POST to fetch + save, GET to read), and Swagger UI for testing endpoints in the browser.
 
 // Phase 3 (Current):
+// Installed Node.js, created the React frontend with Vite (BergenRainTracker.Web, next to the API), and replaced the demo page with a "Bergen Rain Tracker" heading.
 // ...
 
 
-// OOP pillars (Encapsulation -> Inheritance -> ...):
+// OOP pillars (Encapsulation -> Inheritance -> Abstraction -> ...):
 // Phase 1:
 // Encapsulation -> DailyRain.Id has private set, so only EF Core/the database can set it, not outside code
 // Inheritance -> RainDbContext inherits from DbContext
@@ -101,5 +95,9 @@
 // ...
 
 
-// React commands used (npm):
+// React commands used (npm, written as npm.cmd since PowerShell blocks npm's script file by default):
+// npm.cmd create vite@latest BergenRainTracker.Web -- --template react -> creates the React project with Vite
+// cd BergenRainTracker.Web -> moves the terminal into the React folder
+// npm.cmd install -> downloads the packages React needs into node_modules (not on GitHub since it's too big, others get it themselves by running npm install, which reads the package list in package.json)
+// npm.cmd run dev -> starts the React page on http://localhost:5173/ (q + Enter, or Ctrl+C then Y to stop)
 // ...
