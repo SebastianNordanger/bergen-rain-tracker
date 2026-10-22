@@ -1,3 +1,10 @@
+// What to do next session (1 hour ish):
+// 1. git status (should be on feature/react-frontend branch, clean). Start Docker Desktop + docker compose up -d.
+// 2. Run the API in Visual Studio and React (npm.cmd run dev), check both work.
+// 3. Let the API allow requests from React (CORS = Cross-Origin Resource Sharing, set up here in Program.cs), since they run on different ports.
+// 4. Let React get the rain data from GET /api/rain in App.jsx (check if it arrives in the browser console, F12). Commit and push.
+
+
 using Microsoft.EntityFrameworkCore;
 using BergenRainTracker.Api.Data;
 using BergenRainTracker.Api.Services;
