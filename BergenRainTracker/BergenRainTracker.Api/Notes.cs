@@ -89,6 +89,7 @@
 // API testing:
 // Swagger UI (/swagger) for testing endpoints in the browser (https://localhost:7196/swagger).
 // Browser console (F12) on the React page shows what React gets from the API with console.log in the code.
+// Network tab (F12 -> Network -> Fetch/XHR) shows the API calls React makes and the data it gets back (click a request -> Preview), works without console.log.
 // ...
 
 
