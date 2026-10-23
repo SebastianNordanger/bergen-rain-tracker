@@ -8,7 +8,8 @@
 // API endpoints in RainController (POST to fetch + save, GET to read), and Swagger UI for testing endpoints in the browser.
 
 // Phase 3 (Current):
-// Installed Node.js, created the React frontend with Vite (BergenRainTracker.Web, next to the API), and replaced the demo page with a "Bergen Rain Tracker" heading.
+// Installed Node.js, created the React frontend with Vite (BergenRainTracker.Web, next to the API), and replaced the demo page with a "Bergen Rain Tracker" heading,
+// added CORS (Cross-Origin Resource Sharing) in Program.cs so React (port 5173) can call the API, and React gets the rain data from GET /api/rain with fetch in useEffect (checked in the browser console with F12).
 // ...
 
 
@@ -33,6 +34,7 @@
 // git switch -c <branch-name> -> creates a new branch and switches to it (newer command, same as checkout -b)
 // git add . -> marks files as ready to be saved
 // git add <file> -> marks only one specific file as ready to be saved
+// git diff --staged <file> -> shows exactly what will be committed for that file (q to exit if it fills the screen)
 // git commit -m "<message>" -> saves the marked files, with a short message describing what changed
 // git commit --amend --no-edit -> adds new changes into the previous commit instead of making a new one (only safe if not pushed yet)
 // git commit --amend -m "<message>" -> fixes the last commit message (only if not pushed yet)
@@ -86,6 +88,7 @@
 
 // API testing:
 // Swagger UI (/swagger) for testing endpoints in the browser (https://localhost:7196/swagger).
+// Browser console (F12) on the React page shows what React gets from the API with console.log in the code.
 // ...
 
 
@@ -98,6 +101,7 @@
 // React commands used (npm, written as npm.cmd since PowerShell blocks npm's script file by default):
 // npm.cmd create vite@latest BergenRainTracker.Web -- --template react -> creates the React project with Vite
 // cd BergenRainTracker.Web -> moves the terminal into the React folder
+// cd .. -> moves the terminal up one folder (e.g. back to where docker-compose.yml is)
 // npm.cmd install -> downloads the packages React needs into node_modules (not on GitHub since it's too big, others get it themselves by running npm install, which reads the package list in package.json)
 // npm.cmd run dev -> starts the React page on http://localhost:5173/ (q + Enter, or Ctrl+C then Y to stop)
 // ...
