@@ -21,6 +21,15 @@ builder.Services.AddDbContext<RainDbContext>(options => options.UseNpgsql(builde
 // Gives RainService an HttpClient for calling Open-Meteo
 builder.Services.AddHttpClient<RainService>();
 
+// Allow React (different port) to call the API
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReact", policy =>
+    {
+        policy.WithOrigins("http://localhost:5173").AllowAnyHeader().AllowAnyMethod();
+    });
+});
+
 // Run the app
 var app = builder.Build();
 
@@ -33,6 +42,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// Use the CORS rule
+app.UseCors("AllowReact");
 
 app.UseAuthorization();
 
