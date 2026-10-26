@@ -9,7 +9,8 @@
 
 // Phase 3 (Current):
 // Installed Node.js, created the React frontend with Vite (BergenRainTracker.Web, next to the API), and replaced the demo page with a "Bergen Rain Tracker" heading,
-// added CORS (Cross-Origin Resource Sharing) in Program.cs so React (port 5173) can call the API, and React gets the rain data from GET /api/rain with fetch in useEffect (checked in the browser console with F12).
+// added CORS (Cross-Origin Resource Sharing) in Program.cs so React (port 5173) can call the API, React gets the rain data from GET /api/rain with fetch in useEffect (checked in the browser console with F12),
+// saved the rain data with useState in App, and made a RainTable component file that shows it in a table (App sends rainDays to it as a prop (property) called days).
 // ...
 
 
@@ -90,6 +91,7 @@
 // Swagger UI (/swagger) for testing endpoints in the browser (https://localhost:7196/swagger).
 // Browser console (F12) on the React page shows what React gets from the API with console.log in the code.
 // Network tab (F12 -> Network -> Fetch/XHR) shows the API calls React makes and the data it gets back (click a request -> Preview), works without console.log.
+// The React page itself shows the rain data in a table, a quick way to check the API works (only the column titles show if the API is off).
 // ...
 
 
