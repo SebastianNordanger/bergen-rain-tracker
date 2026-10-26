@@ -7,6 +7,7 @@
 
 import { useEffect, useState } from 'react'
 import './App.css'
+import RainTable from './RainTable'
 
 // App component -> what's shown on the page (JSX)
 function App() {
@@ -20,7 +21,8 @@ function App() {
     return (
         <main>
             <h1>Bergen Rain Tracker</h1>
-            <p>{rainDays.length}</p>
+            {/* Shows the rain table, sends rainDays to it as days */}
+            <RainTable days={rainDays} />
         </main>
     )
 }
