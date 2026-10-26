@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import RainTable from './RainTable'
 
-// App component -> what's shown on the page (JSX)
+// App component file -> what's shown on the page (JSX)
 function App() {
     // Rain data (starts as an empty list), rainDays stores it, and setRainDays changes it
     const [rainDays, setRainDays] = useState([])
