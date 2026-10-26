@@ -5,19 +5,22 @@
 // 4. Show it in a table in a new component (RainTable.jsx). Commit and push in Developer Powershell.
 
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 
 // App component -> what's shown on the page (JSX)
 function App() {
-    // Gets the rain data from the API when the page loads and prints it in the browser console (F12)
+    // Rain data (starts as an empty list), rainDays stores it, and setRainDays changes it
+    const [rainDays, setRainDays] = useState([])
+    // Gets the rain data from the API when the page loads and saves it in rainDays
     useEffect(() => {
-        fetch('https://localhost:7196/api/rain').then(response => response.json()).then(data => console.log(data))
+        fetch('https://localhost:7196/api/rain').then(response => response.json()).then(data => setRainDays(data))
     }, [])
 
     return (
         <main>
             <h1>Bergen Rain Tracker</h1>
+            <p>{rainDays.length}</p>
         </main>
     )
 }
