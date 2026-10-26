@@ -1,8 +1,8 @@
 // What to do next session (1 hour ish):
-// 1. git status (should be on feature/react-frontend branch, clean). Start Docker Desktop + docker compose up -d.
-// 2. Run the API in Visual Studio with Select Startup Item (green arrow) and React (npm.cmd run dev) in Developer Powershell, check that the data still shows in the browser console (F12).
-// 3. Save the rain data in React (useState) instead of only printing it with console.log.
-// 4. Show it in a table in a new component (RainTable.jsx). Commit and push in Developer Powershell.
+// 1. Run git status (should be on feature/react-frontend branch, clean). Start Docker Desktop + docker compose up -d.
+// 2. Start the API in Visual Studio with Select Startup Item (green arrow) and React (npm.cmd run dev) in Developer Powershell, check that the table shows on the page.
+// 3. Install a chart package and make a new component file (RainChart.jsx) with a bar chart of the rain per day.
+// 4. Show RainChart in App under the table. Commit and push in Developer Powershell.
 
 
 import { useEffect, useState } from 'react'
