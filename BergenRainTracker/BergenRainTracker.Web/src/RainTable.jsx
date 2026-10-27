@@ -1,4 +1,4 @@
-// RainTable component file -> shows the rain days in a table
+// RainTable component file -> shows the rain per day in a table
 function RainTable({ days }) {
     return (
         <table>
