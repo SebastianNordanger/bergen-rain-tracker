@@ -1,7 +1,7 @@
 // What to do next session (1 hour ish):
 // 1. Run git status (should be on feature/react-frontend branch, clean). Start Docker Desktop + docker compose up -d.
 // 2. Start the API in Visual Studio with Select Startup Item (green arrow) and React (npm.cmd run dev) in Developer Powershell, check that the table and chart show on the page.
-// 3. Add a button in App that sends a POST to the API to fetch new rain days and update the table and chart. Commit and push in Developer Powershell.
+// 3. Add a button in App that sends a POST request to the API to fetch new rain data and update the table and chart. Commit and push in Developer Powershell.
 // 4. If time: clean up the demo CSS, center the page, and style the table, chart, and button. Commit and push.
 
 
