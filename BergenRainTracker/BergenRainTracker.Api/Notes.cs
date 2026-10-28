@@ -103,7 +103,7 @@
 // ...
 
 
-// React commands used (npm, written as npm.cmd since PowerShell blocks npm's script file by default):
+// React and terminal commands used (npm, written as npm.cmd since PowerShell blocks npm's script file by default):
 // npm.cmd create vite@latest BergenRainTracker.Web -- --template react -> creates the React project with Vite
 // cd BergenRainTracker.Web -> moves the terminal into the React folder
 // cd .. -> moves the terminal up one folder (e.g. back to where docker-compose.yml is)
