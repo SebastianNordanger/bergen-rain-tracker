@@ -13,5 +13,11 @@ namespace BergenRainTracker.Api.Data
 
         // The DailyRains table - each DailyRain object is one row
         public DbSet<DailyRain> DailyRains { get; set; }
+
+        // Makes Date unique - so that the database refuses two rows with the same date
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<DailyRain>().HasIndex(r => r.Date).IsUnique();
+        }
     }
 }
