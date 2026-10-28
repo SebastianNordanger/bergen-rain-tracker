@@ -1,6 +1,6 @@
 # Runs PostgreSQL in Docker for the rain tracker (local development only)
 services:
-    db: 
+    db:
         image: postgres:17
         container_name: bergen-rain-db
         environment:
