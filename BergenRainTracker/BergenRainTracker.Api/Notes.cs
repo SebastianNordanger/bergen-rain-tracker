@@ -8,14 +8,15 @@
 // API endpoints in RainController (POST to fetch + save, GET to read), and Swagger UI for testing endpoints in the browser.
 
 // Phase 3 (Current):
-// Installed Node.js, created the React frontend with Vite (BergenRainTracker.Web, next to the API), and replaced the demo page with a "Bergen Rain Tracker" heading,
+// Installed Node.js, created the React frontend with Vite (BergenRainTracker.Web, next to the API), replaced the demo page with a "Bergen Rain Tracker" heading,
 // added CORS (Cross-Origin Resource Sharing) in Program.cs so React (port 5173) can call the API, React gets the rain data from GET /api/rain with fetch in useEffect (checked in the browser console with F12),
 // saved the rain data with useState in App, made a RainTable component file that shows it in a table (App sends rainDays to it as a prop (property) called days), changed the browser tab title and icon (rain emoji) in index.html,
-// and installed the Recharts package and made a RainChart component file that shows the rain (mm) for each date in a bar chart under the table (gets rainDays as days, same as RainTable).
+// installed the Recharts package and made a RainChart component file that shows the rain (mm) for each date in a bar chart under the table (gets rainDays as days, same as RainTable),
+// added a "Fetch new rain data" button in App (POST to fetch + save, then GET to update the table and chart, disabled while working so it can't be clicked twice), and made Date unique in the database with the AddUniqueDateIndex migration.
 // ...
 
 
-// OOP pillars (Encapsulation -> Inheritance -> Abstraction -> ...):
+// OOP pillars (Encapsulation -> Inheritance -> Abstraction -> Polymorphism):
 // Phase 1:
 // Encapsulation -> DailyRain.Id has private set, so only EF Core/the database can set it, not outside code
 // Inheritance -> RainDbContext inherits from DbContext
@@ -24,7 +25,7 @@
 // Abstraction -> RainController uses Ok() and ToListAsync() without knowing how they work inside
 
 // Phase 3 (Current):
-// ...
+// Polymorphism -> RainDbContext overrides OnModelCreating from DbContext to add its own rule (unique Date)
 
 
 // Git commands used (terminal, ordered by typical workflow):
@@ -60,6 +61,7 @@
 // Only the database runs in Docker, the API reaches it via localhost:5432.
 // The volume (rain-data) keeps the database data even if the container is removed.
 // Port is bound to 127.0.0.1, so the database is only reachable from this PC.
+// docker-compose.yml is in the top folder (bergen-rain-tracker), but docker compose commands also work from BergenRainTracker, since Docker looks in the folders above.
 // ...
 
 
@@ -70,12 +72,15 @@
 // Microsoft.EntityFrameworkCore.Tools -> migration commands in Visual Studio
 // Connection string is in appsettings.json - tells the API where the database is and how to log in
 // Add-Migration InitialCreate -> creates the migration files (Up = create table, Down = undo)
-// Update-Database -> creates the table in Postgres (first "fail" is normal, EF Core creates its history table first)
+// Update-Database -> applies the migrations to Postgres (first time: created the DailyRains table, and a "fail" is normal since EF Core looks for its list of applied migrations before it exists, then creates it)
+// Add-Migration AddUniqueDateIndex -> creates the migration for a unique rule on Date (no two rows with the same date), then the Update-Database command adds it to Postgres
 // ...
 
 
 // SQL commands used (PostgreSQL):
 // SELECT SUM("Millimeters") FROM "DailyRains"; -> adds up all the rain (quotes needed because EF Core uses capital letters in names, and Postgres makes names lowercase without quotes)
+// SELECT COUNT(*) FROM "DailyRains"; -> counts the rows in the table
+// DELETE FROM "DailyRains" a USING "DailyRains" b WHERE a."Date" = b."Date" AND a."Id" > b."Id"; -> deletes double rows with the same date, keeps the first one (lowest Id)
 // ...
 
 
@@ -106,7 +111,7 @@
 // React and terminal commands used (npm, written as npm.cmd since PowerShell blocks npm's script file by default):
 // npm.cmd create vite@latest BergenRainTracker.Web -- --template react -> creates the React project with Vite
 // cd BergenRainTracker.Web -> moves the terminal into the React folder
-// cd .. -> moves the terminal up one folder (e.g. back to where docker-compose.yml is)
+// cd .. -> moves the terminal up one folder (e.g. from the React folder back to BergenRainTracker, where docker compose commands work)
 // npm.cmd install -> downloads the packages React needs into node_modules (not on GitHub since it's too big, others get it themselves by running npm install, which reads the package list in package.json)
 // npm.cmd run dev -> starts the React page on http://localhost:5173/ (q + Enter, or Ctrl+C then Y to stop)
 // ...
