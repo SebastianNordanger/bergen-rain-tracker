@@ -41,6 +41,9 @@ namespace BergenRainTracker.Api.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Date")
+                        .IsUnique();
+
                     b.ToTable("DailyRains");
                 });
 #pragma warning restore 612, 618
