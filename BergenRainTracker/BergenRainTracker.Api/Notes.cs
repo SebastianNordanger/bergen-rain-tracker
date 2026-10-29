@@ -38,6 +38,9 @@
 // git switch -c <branch-name> -> creates a new branch and switches to it (newer command, same as checkout -b)
 // git add . -> marks files as ready to be saved
 // git add <file> -> marks only one specific file as ready to be saved
+// git rm <file> -> deletes a file and marks the deletion as ready to be saved
+// git rm -r <folder> -> deletes a whole folder and everything in it, and marks the deletion as ready to be saved
+// git diff <file> -> shows changes not yet marked as ready to be saved (q to exit if it fills the screen)
 // git diff --staged <file> -> shows exactly what will be committed for that file (q to exit if it fills the screen)
 // git commit -m "<message>" -> saves the marked files, with a short message describing what changed
 // git commit --amend --no-edit -> adds new changes into the previous commit instead of making a new one (only safe if not pushed yet)
@@ -47,7 +50,6 @@
 // git push -> uploads commits to GitHub
 // git pull -> downloads the latest changes from GitHub
 // git merge <branch-name> -> brings a branch's commits into the current branch (e.g. feature into main)
-//
 
 
 // Docker commands used (PostgreSQL only, API runs in Visual Studio):
@@ -80,6 +82,7 @@
 // SELECT SUM("Millimeters") FROM "DailyRains"; -> adds up all the rain (quotes needed because EF Core uses capital letters in names, and Postgres makes names lowercase without quotes)
 // SELECT COUNT(*) FROM "DailyRains"; -> counts the rows in the table
 // DELETE FROM "DailyRains" a USING "DailyRains" b WHERE a."Date" = b."Date" AND a."Id" > b."Id"; -> deletes double rows with the same date, keeps the first one (lowest Id)
+// ...
 
 
 // Open-Meteo notes:
