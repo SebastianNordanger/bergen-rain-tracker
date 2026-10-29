@@ -56,3 +56,7 @@ th {
 tbody tr:nth-child(even) {
     background: #1f2028;
 }
+
+a {
+    color: #4a90d9;
+}

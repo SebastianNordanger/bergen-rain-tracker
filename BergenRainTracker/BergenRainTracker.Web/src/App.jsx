@@ -36,11 +36,14 @@ function App() {
     return (
         <main>
             <h1>Bergen Rain Tracker</h1>
+            <p>Historical daily rain data for Bergen sentrum (only finished days, not live)</p>
             {/* Button that fetches new rain data, turns off and shows "Fetching..." until it's done */}
             <button onClick={fetchNewRainData} disabled={isLoading}>{isLoading ? 'Fetching...' : 'Fetch new rain data'}</button>
             {/* Shows the rain chart and table, sends rainDays to both as days */}
             <RainChart days={rainDays} />
             <RainTable days={rainDays} />
+            {/* Open-Meteo credit (needed by their license) */}
+            <p>Weather data by <a href="https://open-meteo.com/">Open-Meteo.com</a></p>
         </main>
     )
 }
