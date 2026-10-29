@@ -18,11 +18,6 @@ table {
     border-collapse: collapse;
 }
 
-/* Box around the chart (added by the Recharts package) -> centered like the table */
-.recharts-wrapper {
-    margin: 0 auto;
-}
-
 th,
 td {
     padding: 6px 16px;
