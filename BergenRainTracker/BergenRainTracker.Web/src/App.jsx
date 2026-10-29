@@ -6,7 +6,6 @@
 
 
 import { useEffect, useState } from 'react'
-import './App.css'
 import RainTable from './RainTable'
 import RainChart from './RainChart'
 
