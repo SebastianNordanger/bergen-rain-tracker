@@ -1,15 +1,8 @@
-// What to do next session (1 hour ish):
-// 1. Run git status (should be on feature/react-frontend branch, clean). Start Docker Desktop + docker compose up -d.
-// 2. Start the API in Visual Studio with Select Startup Item (green arrow) and React (npm.cmd run dev) in Developer Powershell, then check that the table, chart, and button work on the page.
-// 3. Clean up the demo CSS in App.css and index.css, center the page, and style the heading, table, chart, and button. Commit and push in Developer Powershell.
-// 4. If time: add the "Weather data by Open-Meteo.com" credit and a short line on the page (historical daily rain, not live), and delete the unused favicon.svg. Commit and push.
-
-
+// App component file -> what's shown on the page (JSX)
 import { useEffect, useState } from 'react'
 import RainTable from './RainTable'
 import RainChart from './RainChart'
 
-// App component file -> what's shown on the page (JSX)
 function App() {
     // Rain data (starts as an empty list), rainDays stores it, and setRainDays changes it
     const [rainDays, setRainDays] = useState([])
