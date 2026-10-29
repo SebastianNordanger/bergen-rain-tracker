@@ -38,9 +38,9 @@ function App() {
             <h1>Bergen Rain Tracker</h1>
             {/* Button that fetches new rain data, turns off and shows "Fetching..." until it's done */}
             <button onClick={fetchNewRainData} disabled={isLoading}>{isLoading ? 'Fetching...' : 'Fetch new rain data'}</button>
-            {/* Shows the rain table and chart, sends rainDays to both as days */}
-            <RainTable days={rainDays} />
+            {/* Shows the rain chart and table, sends rainDays to both as days */}
             <RainChart days={rainDays} />
+            <RainTable days={rainDays} />
         </main>
     )
 }
