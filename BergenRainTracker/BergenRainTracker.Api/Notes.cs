@@ -82,15 +82,36 @@
 // SELECT SUM("Millimeters") FROM "DailyRains"; -> adds up all the rain (quotes needed because EF Core uses capital letters in names, and Postgres makes names lowercase without quotes)
 // SELECT COUNT(*) FROM "DailyRains"; -> counts the rows in the table
 // DELETE FROM "DailyRains" a USING "DailyRains" b WHERE a."Date" = b."Date" AND a."Id" > b."Id"; -> deletes double rows with the same date, keeps the first one (lowest Id)
-// ...
+
+// SQL practice commands (on test tables, deleted afterwards):
+// CREATE TABLE practice (id SERIAL PRIMARY KEY, name TEXT, amount INT); -> creates a table with 3 columns (SERIAL = id counts up by itself, PRIMARY KEY = unique id per row, TEXT = text, INT = whole number)
+// INSERT INTO practice (name, amount) VALUES ('rain', 10); -> adds one row (single quotes = text value, double quotes = a name like "DailyRains", id is set by itself)
+// INSERT INTO practice (name, amount) VALUES ('snow', 5), ('sun', 0); -> adds several rows at once, each row gets its own id
+// SELECT * FROM practice; -> shows all rows and columns (* = all columns)
+// SELECT name FROM practice WHERE amount > 0; -> shows only the name column, only for rows where amount is above 0
+// SELECT * FROM practice WHERE name LIKE 's%'; -> shows rows where name starts with "s" (% = anything after)
+// SELECT * FROM practice ORDER BY amount DESC; -> sorts by amount, biggest first (DESC = high to low, ASC or nothing = low to high)
+// SELECT * FROM practice ORDER BY id LIMIT 2; -> sorts by id, then keeps only the first 2 rows (without ORDER BY, the order isn't guaranteed)
+// SELECT COUNT(*), SUM(amount), AVG(amount) FROM practice; -> counts the rows, adds up amount, and gives the average
+// UPDATE practice SET amount = 12 WHERE name = 'rain'; -> changes a value in a row (always use WHERE, or every row changes)
+// DELETE FROM practice WHERE name = 'sun'; -> deletes a row (always use WHERE, or every row is deleted)
+// ALTER TABLE practice ADD COLUMN note TEXT; -> adds a new empty column to the table
+// CREATE TABLE tags (id SERIAL PRIMARY KEY, practice_id INT REFERENCES practice(id), label TEXT); -> creates a second table with a foreign key (practice_id must be an id that exists in practice)
+// INSERT INTO tags (practice_id, label) VALUES (1, 'wet'), (1, 'cold'), (1, 'grey'), (2, 'white'); -> adds 4 tags, 3 for rain (id 1) and 1 for snow (id 2)
+// SELECT practice.name, tags.label FROM practice JOIN tags ON tags.practice_id = practice.id; -> combines both tables where the ids match, so each tag is shown with its name
+// SELECT practice_id, COUNT(*) FROM tags GROUP BY practice_id ORDER BY practice_id; -> puts tags with the same practice_id in a group and counts each group, sorted by id
+// INSERT INTO tags (practice_id, label) VALUES (99, 'fake'); -> fails on purpose, the foreign key stops it since no row in practice has id 99
+// DROP TABLE practice; -> fails on purpose, since tags still depends on practice
+// DROP TABLE tags; -> deletes the tags table (tags depends on practice, but nothing depends on tags)
+// DROP TABLE practice; -> deletes the practice table (works now, since nothing depends on it anymore)
 
 
 // Open-Meteo notes:
-// Free weather API, no key needed: https://open-meteo.com
+// Free weather API, no key needed: https://open-meteo.com/
 // Bergen coordinates: 60.39, 5.32 (from Google Maps, rounded to 2 decimals).
 // Uses daily time -> Date, precipitation_sum (rain + showers) -> Millimeters, precipitation_hours -> RainHours (Id is set by the database).
 // past_days=31&forecast_days=0 -> only finished days (today's value isn't final yet).
-// Days go from midnight to midnight (weather model), so they can differ a bit from station data on Yr (yr.no), which seems to count from morning to morning.
+// Days are counted 00:00 to 00:00 (weather model), so they can differ a bit from station data on Yr (https://www.yr.no/), which counts 07:00 to 07:00.
 // Data is for a small area around Bergen sentrum (a few km wide), not all of Bergen.
 
 
