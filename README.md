@@ -1,6 +1,6 @@
 # Bergen Rain Tracker
 
-A rain history app for Bergen, built with an ASP.NET Core REST API, PostgreSQL in Docker, and a React frontend.
+A rain history web app for Bergen, built with an ASP.NET Core REST API, PostgreSQL in Docker, and a React frontend.
 
 ![Screenshot](bergen_rain_tracker_screenshot.png)
 
