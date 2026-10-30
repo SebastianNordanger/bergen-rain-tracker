@@ -19,7 +19,7 @@ React fetches from the API -> the API uses EF Core to read/write PostgreSQL -> J
 ## How to run
 
 1. Start Docker Desktop, then from the repo root run: `docker compose up -d`
-2. Open `BergenRainTracker/BergenRainTracker.sln` in Visual Studio
+2. Open `BergenRainTracker/BergenRainTracker.slnx` in Visual Studio
 3. Apply the migrations: Package Manager Console (Default project: `BergenRainTracker.Api`) -> `Update-Database`
 4. Run the API (F5 or the green Run button, https) - Swagger UI is at `https://localhost:7196/swagger`
 5. Available endpoints:
