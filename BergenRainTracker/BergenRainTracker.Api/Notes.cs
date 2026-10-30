@@ -55,8 +55,8 @@
 // Docker commands used (PostgreSQL only, API runs in Visual Studio):
 // docker compose up -d -> starts the database container in the background
 // docker ps -> lists running containers
-// docker exec -it bergen-rain-db psql -U rainuser -d raintracker -c "\dt" -> lists the tables in Postgres
-// docker exec -it bergen-rain-db psql -U rainuser -d raintracker -> opens Postgres inside the container (\q to exit)
+// docker exec -it bergen-rain-db psql -U rainuser -d raintracker -> opens Postgres inside the container (\dt lists the tables, \q to exit)
+// docker exec -it bergen-rain-db psql -U rainuser -d raintracker -c "\dt" -> lists the tables in Postgres without opening it
 // docker compose down -> stops and removes the container (data is kept in the volume)
 
 
